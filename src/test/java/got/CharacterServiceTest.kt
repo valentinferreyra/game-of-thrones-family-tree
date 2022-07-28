@@ -47,8 +47,35 @@ class CharacterServiceTest : ServiceObjects() {
     @Test
     fun `get character's all sons`() {
         val allNedStarkSons = characterService.allSonsOf(nedStark)
+        val allDaenerysTargaryenSons = characterService.allSonsOf(daenerysTargaryen)
 
         Assertions.assertEquals(allNedStarkSons.size, 5)
+        Assertions.assertTrue(allDaenerysTargaryenSons.isEmpty())
+    }
+
+    @Test
+    fun `if try to get all sons of an non existent character, then throws an exception`() {
+        dataService.deleteAll()
+
+        Assertions.assertThrows(RuntimeException::class.java) {
+            characterService.allSonsOf(nedStark)
+        }
+    }
+
+    @Test
+    fun `get all members of a house`() {
+        val allTargaryenMembers = characterService.membersOfHouse("Targaryen")
+        val allLannisterMembers = characterService.membersOfHouse("Lannister")
+
+        Assertions.assertEquals(allTargaryenMembers.size, 4)
+        Assertions.assertTrue(allLannisterMembers.isEmpty())
+    }
+
+    @Test
+    fun `if try to get members of a empty String, then throws an exception`() {
+        Assertions.assertThrows(RuntimeException::class.java) {
+            characterService.membersOfHouse("")
+        }
     }
 
     @AfterEach

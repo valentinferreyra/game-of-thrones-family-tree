@@ -16,4 +16,10 @@ interface CharacterDAO : Neo4jRepository<Character, Long?> {
         RETURN s
     """)
     fun allSonsOf(id: Long): List<Character>
+
+    @Query("""
+        MATCH(c: Character {house : ${'$'}nameOfHouse})
+        RETURN c
+    """)
+    fun allMembersOfHouse(nameOfHouse: String): List<Character>
 }

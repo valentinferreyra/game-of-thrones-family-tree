@@ -22,12 +22,14 @@ open class CharacterServiceImpl : CharacterService {
     }
 
     override fun allSonsOf(character: Character): List<Character> {
-        return characterDAO.allSonsOf(character.id!!)
+        if (characterDAO.existsById(character.id!!)) return characterDAO.allSonsOf(character.id!!)
+            else throw RuntimeException("There is not character with that id")
     }
 
-//    override fun membersOfHouse(house: String): List<Character> {
-//        TODO("Not yet implemented")
-//    }
+    override fun membersOfHouse(house: String): List<Character> {
+        if(house.isBlank()) throw RuntimeException("Invalid house name")
+        return characterDAO.allMembersOfHouse(house)
+    }
 
     override fun deleteAll() {
         characterDAO.detachDelete()
