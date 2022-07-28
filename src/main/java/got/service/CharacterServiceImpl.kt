@@ -29,7 +29,7 @@ open class CharacterServiceImpl : CharacterService {
 //        TODO("Not yet implemented")
 //    }
 
-//    override fun deleteAll() {
-//        TODO("Not yet implemented")
-//    }
+    override fun deleteAll() {
+        characterDAO.detachDelete()
+    }
 }
