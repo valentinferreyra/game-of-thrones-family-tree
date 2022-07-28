@@ -20,11 +20,11 @@ open class CharacterServiceImpl : CharacterService {
     override fun getCharacter(id: Long): Character {
         return characterDAO.findById(id).orElseThrow { RuntimeException("There is not character with that id") }
     }
-//
-//    override fun allSonsOf(character: Character): List<Character> {
-//        TODO("Not yet implemented")
-//    }
-//
+
+    override fun allSonsOf(character: Character): List<Character> {
+        return characterDAO.allSonsOf(character.id!!)
+    }
+
 //    override fun membersOfHouse(house: String): List<Character> {
 //        TODO("Not yet implemented")
 //    }

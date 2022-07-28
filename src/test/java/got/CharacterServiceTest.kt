@@ -44,6 +44,13 @@ class CharacterServiceTest : ServiceObjects() {
         Assertions.assertThrows(RuntimeException::class.java) { characterService.getCharacter(1) }
     }
 
+    @Test
+    fun `get character's all sons`() {
+        val allNedStarkSons = characterService.allSonsOf(nedStark)
+
+        Assertions.assertEquals(allNedStarkSons.size, 5)
+    }
+
     @AfterEach
     fun tearDown() { dataService.deleteAll() }
 }
