@@ -1,6 +1,8 @@
+package got
+
 import org.springframework.boot.test.context.SpringBootTest
-import service.CharacterService
-import model.Character
+import got.service.CharacterService
+import got.model.Character
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,7 +18,7 @@ class CharacterServiceTest {
     @BeforeEach
     fun setUp() {
         nedStark = Character().apply {
-            name = "Eddard"
+            name = "Eddard Stark"
             house = "Stark"
         }
     }

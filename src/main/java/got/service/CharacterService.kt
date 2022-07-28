@@ -1,6 +1,6 @@
-package service
+package got.service
 
-import model.Character
+import got.model.Character
 
 interface CharacterService {
     fun saveCharacter(character: Character) : Character

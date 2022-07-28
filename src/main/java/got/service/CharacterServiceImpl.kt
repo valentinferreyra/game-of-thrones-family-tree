@@ -1,14 +1,14 @@
-package service
+package got.service
 
-import dao.CharacterDAO
+import got.dao.CharacterDAO
 import org.springframework.stereotype.Service
-import model.Character
+import got.model.Character
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
-class CharacterServiceImpl : CharacterService {
+open class CharacterServiceImpl : CharacterService {
 
     @Autowired
     lateinit var characterDAO : CharacterDAO
